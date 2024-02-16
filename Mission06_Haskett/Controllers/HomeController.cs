@@ -16,9 +16,16 @@ namespace Mission06_Haskett.Controllers
             return View();
         }
 
+        [HttpGet]
         public IActionResult Collection()
         {
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult Collection(MovieSurvey response)
+        {
+            return View("Confirmation", response);
         }
     }
 }
