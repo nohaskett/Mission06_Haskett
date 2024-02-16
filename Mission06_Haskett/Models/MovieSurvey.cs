@@ -1,7 +1,11 @@
-﻿namespace Mission06_Haskett.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Mission06_Haskett.Models
 {
     public class MovieSurvey
     {
+        [Key]
+        [Required]
         public int MovieEntryID { get ; set; }
         public string Category { get; set;}
         public string Title { get; set; }
