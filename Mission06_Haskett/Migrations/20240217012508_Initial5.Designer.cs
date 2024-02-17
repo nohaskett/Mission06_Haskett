@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Mission06_Haskett.Models;
 
@@ -10,9 +11,11 @@ using Mission06_Haskett.Models;
 namespace Mission06_Haskett.Migrations
 {
     [DbContext(typeof(MovieSurveyContext))]
-    partial class MovieSurveyContextModelSnapshot : ModelSnapshot
+    [Migration("20240217012508_Initial5")]
+    partial class Initial5
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.2");

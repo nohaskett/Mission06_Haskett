@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Mission06_Haskett.Models;
 
@@ -10,9 +11,11 @@ using Mission06_Haskett.Models;
 namespace Mission06_Haskett.Migrations
 {
     [DbContext(typeof(MovieSurveyContext))]
-    partial class MovieSurveyContextModelSnapshot : ModelSnapshot
+    [Migration("20240217010920_Initial2")]
+    partial class Initial2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.2");
@@ -27,9 +30,6 @@ namespace Mission06_Haskett.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Category2")
-                        .HasColumnType("TEXT");
-
                     b.Property<string>("Director")
                         .IsRequired()
                         .HasColumnType("TEXT");
@@ -41,7 +41,6 @@ namespace Mission06_Haskett.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Notes")
-                        .HasMaxLength(25)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Rating")
