@@ -6,6 +6,11 @@ namespace Mission06_Haskett.Controllers
 {
     public class HomeController : Controller
     {
+        private MovieSurveyContext _context;
+        public HomeController(MovieSurveyContext temp) // Constructor
+        {
+            _context = temp;
+        }
         public IActionResult Index()
         {
             return View();
@@ -25,6 +30,9 @@ namespace Mission06_Haskett.Controllers
         [HttpPost]
         public IActionResult Collection(MovieSurvey response)
         {
+            _context.Movies.Add(response); // Add record to database
+            _context.SaveChanges();
+
             return View("Confirmation", response);
         }
     }
