@@ -11,17 +11,17 @@ namespace Mission06_Haskett.Controllers
         {
             _context = temp;
         }
-        public IActionResult Index()
+        public IActionResult Index() // For the index page view and action
         {
             return View();
         }
 
-        public IActionResult KnowJoel()
+        public IActionResult KnowJoel() // For the Get to Knoow Joel Page. Just return the same file.
         {
             return View();
         }
 
-        [HttpGet]
+        [HttpGet] // Get and Post methods to submit the form and post it to the database
         public IActionResult Collection()
         {
             return View();
@@ -31,7 +31,7 @@ namespace Mission06_Haskett.Controllers
         public IActionResult Collection(MovieSurvey response)
         {
             _context.Movies.Add(response); // Add record to database
-            _context.SaveChanges();
+            _context.SaveChanges(); // save the record in the database
 
             return View("Confirmation", response);
         }
