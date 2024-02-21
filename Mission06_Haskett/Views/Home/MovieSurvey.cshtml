@@ -6,10 +6,19 @@
 
 @model MovieSurvey
 
+@if (ViewBag.ErrorMessage != null)
+{
+    <div class="alert alert-danger">
+        @ViewBag.ErrorMessage
+    </div>
+}
+
 <h1 style="text-align: center; color: darkblue">Enter a Movie to the Collection</h1>
 
 <!--This is my form to have a user submit a record-->
 <form method="post" style="max-width: 400px; margin: 0 auto; text-align: left; border: 1px solid #001f3f; padding: 20px; border-radius: 8px;">
+
+    <input type="hidden" asp-for="MovieId" />
     
     <select asp-for="CategoryId">
         <option value="">Select a Category</option>

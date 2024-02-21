@@ -59,5 +59,47 @@ namespace Mission06_Haskett.Controllers
 
             return View(movies);
         }
+
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            var recordToEdit = _context.Movies
+                .Single(x => x.MovieId == id);
+
+            ViewBag.Categories = _context.Categories
+                .OrderBy(x => x.Category)
+                .ToList();
+
+            return View("MovieSurvey", recordToEdit);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(MovieSurvey updatedInfo)
+        {
+            
+            _context.Update(updatedInfo);
+            _context.SaveChanges();
+
+            return RedirectToAction("Collection");
+            
+        }
+
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            var recordToDelete = _context.Movies
+                .Single(x => x.MovieId == id);
+
+            return View(recordToDelete);
+        }
+
+        [HttpPost]
+        public IActionResult Delete(MovieSurvey record)
+        {
+            _context.Movies.Remove(record);
+            _context.SaveChanges();
+
+            return RedirectToAction("Collection");
+        }
     }
 }

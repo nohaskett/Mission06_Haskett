@@ -10,11 +10,12 @@ namespace Mission06_Haskett.Models
         public int MovieId { get ; set; } // Getters and setters for each table attribute
 
         [ForeignKey("CategoryId")]
-        public int CategoryId { get; set; } // Need to fix this to be category ID, not category
+        public int? CategoryId { get; set; } // Need to fix this to be category ID, not category
         public CategoryList? Category { get; set; }
         [Required(ErrorMessage = "Sorry, you need to enter a title.")]
         public string Title { get; set; }
-        [Required(ErrorMessage = "Sorry, you need to enter a year.")]
+        [Required(ErrorMessage = "Sorry, you need to enter a valid year.")]
+        [Range(1880, 2024)]
         public int Year { get; set; }
         
         public string? Director { get; set; }
