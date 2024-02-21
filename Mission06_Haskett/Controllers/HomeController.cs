@@ -35,5 +35,14 @@ namespace Mission06_Haskett.Controllers
 
             return View("Confirmation", response);
         }
+
+        public IActionResult Collection()
+        {
+            // Linq
+            var movies = _context.Movies
+                .OrderBy(x => x.MovieId).ToList();
+
+            return View(movies);
+        }
     }
 }
