@@ -13,9 +13,9 @@
     
     <select asp-for="CategoryId">
         <option value="">Select a Category</option>
-        @foreach (Category c in ViewBag.Categories)
+        @foreach (CategoryList c in ViewBag.Categories)
         {
-            <option value="@c.CategoryId">@c.CategoryName</option>
+            <option value="@c.CategoryId">@c.Category</option>
         }
     </select>
 
@@ -26,10 +26,10 @@
     <input asp-for="Year" style="width: 100%; padding: 8px; margin-bottom: 10px; box-sizing: border-box;" required>
 
     <label asp-for="Director" style="display: block; margin-bottom: 5px;">Director:</label>
-    <input asp-for="Director" style="width: 100%; padding: 8px; margin-bottom: 10px; box-sizing: border-box;" required>
+    <input asp-for="Director" style="width: 100%; padding: 8px; margin-bottom: 10px; box-sizing: border-box;">
 
     <label asp-for="Rating" style="display: block; margin-bottom: 5px;">Rating:</label>
-    <select asp-for="Rating" required>
+    <select asp-for="Rating">
         <option value="G">G</option>
         <option value="PG">PG</option>
         <option value="PG-13">PG-13</option>
@@ -37,7 +37,7 @@
     </select>
 
     <label asp-for="Edited" style="display: block; margin-bottom: 5px;">Edited:</label>
-    <select asp-for="Edited">
+    <select asp-for="Edited" required>
         <option value="true">Yes</option>
         <option value="false">No</option>
     </select>
@@ -46,13 +46,15 @@
     <input asp-for="LentTo" style="width: 100%; padding: 8px; margin-bottom: 10px; box-sizing: border-box;">
 
     <label asp-for="CopiedToPlex" style="display: block; margin-bottom: 5px;">Copied to Plex?</label>
-    <select asp-for="CopiedToPlex">
-        <option value="true">Yes</option>
-        <option value="false">No</option>
+    <select asp-for="CopiedToPlex" required>
+        <option value="1">Yes</option>
+        <option value="0">No</option>
     </select>
 
     <label asp-for="Notes" style="display: block; margin-bottom: 5px;">Notes:</label>
     <input asp-for="Notes" style="width: 100%; padding: 8px; margin-bottom: 10px; box-sizing: border-box;" maxlength="25">
 
     <button type="submit" style="background-color: #4CAF50; color: white; padding: 10px 15px; border: none; border-radius: 5px; cursor: pointer;">Enter Your Movie</button>
+
+    <div asp-validation-summary="All"></div>
 </form>

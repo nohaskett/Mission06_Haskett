@@ -25,7 +25,7 @@ namespace Mission06_Haskett.Controllers
         public IActionResult MovieSurvey()
         {
             ViewBag.Categories = _context.Categories
-                .OrderBy(x => x.CategoryName)
+                .OrderBy(x => x.Category)
                 .ToList();
 
             return View("MovieSurvey", new MovieSurvey());
@@ -34,10 +34,21 @@ namespace Mission06_Haskett.Controllers
         [HttpPost]
         public IActionResult MovieSurvey(MovieSurvey response)
         {
-            _context.Movies.Add(response); // Add record to database
-            _context.SaveChanges(); // save the record in the database
+            if (ModelState.IsValid)
+            {
+                _context.Movies.Add(response); // Add record to database
+                _context.SaveChanges(); // save the record in the database
 
-            return View("Confirmation", response);
+                return View("Confirmation", response);
+            }
+            else // Invalid Data
+            {
+                ViewBag.Categories = _context.Categories
+                .OrderBy(x => x.Category)
+                .ToList();
+
+                return View(response);
+            }
         }
 
         public IActionResult Collection()

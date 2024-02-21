@@ -9,20 +9,20 @@ namespace Mission06_Haskett.Models
         }
 
         public DbSet<MovieSurvey> Movies { get; set; }
-        public DbSet<Category> Categories {  get; set; }
+        public DbSet<CategoryList> Categories {  get; set; }
         
         protected override void OnModelCreating(ModelBuilder modelBuilder) // Seed Data
         {
-            modelBuilder.Entity<Category>().HasData(
+            modelBuilder.Entity<CategoryList>().HasData(
 
-                new Category { CategoryId = 1, CategoryName = "Miscellaneous" },
-                new Category { CategoryId = 2, CategoryName = "Drama" },
-                new Category { CategoryId = 3, CategoryName = "Television" },
-                new Category { CategoryId = 4, CategoryName = "Horror/Suspense" },
-                new Category { CategoryId = 5, CategoryName = "Comedy" },
-                new Category { CategoryId = 6, CategoryName = "Family" },
-                new Category { CategoryId = 7, CategoryName = "Action/Adventure" },
-                new Category { CategoryId = 8, CategoryName = "VHS" }
+                new CategoryList { CategoryId = 1, Category = "Miscellaneous" },
+                new CategoryList { CategoryId = 2, Category = "Drama" },
+                new CategoryList { CategoryId = 3, Category = "Television" },
+                new CategoryList { CategoryId = 4, Category = "Horror/Suspense" },
+                new CategoryList { CategoryId = 5, Category = "Comedy" },
+                new CategoryList { CategoryId = 6, Category = "Family" },
+                new CategoryList { CategoryId = 7, Category = "Action/Adventure" },
+                new CategoryList { CategoryId = 8, Category = "VHS" }
                 );
         }
     }

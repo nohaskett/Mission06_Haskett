@@ -11,17 +11,19 @@ namespace Mission06_Haskett.Models
 
         [ForeignKey("CategoryId")]
         public int CategoryId { get; set; } // Need to fix this to be category ID, not category
-        public Category? Category { get; set; }
-        public string? Title { get; set; }
-        
+        public CategoryList? Category { get; set; }
+        [Required(ErrorMessage = "Sorry, you need to enter a title.")]
+        public string Title { get; set; }
+        [Required(ErrorMessage = "Sorry, you need to enter a year.")]
         public int Year { get; set; }
         
         public string? Director { get; set; }
         
         public string? Rating { get; set; }
-        public bool? Edited { get; set; }
+        [Required(ErrorMessage = "Sorry, you need to enter if the movie was edited.")]
+        public bool Edited { get; set; }
         public string? LentTo { get; set; }
-        
+        [Required(ErrorMessage = "Sorry, you need to designate if the movie was copied to plex.")]
         public int CopiedToPlex { get; set; }
         [MaxLength(25)] // Client Side entry validation
         [StringLength(25)] // Server side entry validation
