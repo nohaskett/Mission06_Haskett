@@ -10,8 +10,14 @@
 
 <!--This is my form to have a user submit a record-->
 <form method="post" style="max-width: 400px; margin: 0 auto; text-align: left; border: 1px solid #001f3f; padding: 20px; border-radius: 8px;">
-    <label asp-for="Category" style="display: block; margin-bottom: 5px;">Category:</label>
-    <input asp-for="Category" style="width: 100%; padding: 8px; margin-bottom: 10px; box-sizing: border-box;" required>
+    
+    <select asp-for="CategoryId">
+        <option value="">Select a Category</option>
+        @foreach (Category c in ViewBag.Categories)
+        {
+            <option value="@c.CategoryId">@c.CategoryName</option>
+        }
+    </select>
 
     <label asp-for="Title" style="display: block; margin-bottom: 5px;">Title:</label>
     <input asp-for="Title" style="width: 100%; padding: 8px; margin-bottom: 10px; box-sizing: border-box;" required>

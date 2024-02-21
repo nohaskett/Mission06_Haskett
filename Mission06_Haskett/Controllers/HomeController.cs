@@ -24,7 +24,11 @@ namespace Mission06_Haskett.Controllers
         [HttpGet] // Get and Post methods to submit the form and post it to the database
         public IActionResult MovieSurvey()
         {
-            return View();
+            ViewBag.Categories = _context.Categories
+                .OrderBy(x => x.CategoryName)
+                .ToList();
+
+            return View("MovieSurvey", new MovieSurvey());
         }
 
         [HttpPost]
