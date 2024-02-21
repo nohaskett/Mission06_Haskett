@@ -22,13 +22,13 @@ namespace Mission06_Haskett.Controllers
         }
 
         [HttpGet] // Get and Post methods to submit the form and post it to the database
-        public IActionResult Collection()
+        public IActionResult MovieSurvey()
         {
             return View();
         }
 
         [HttpPost]
-        public IActionResult Collection(MovieSurvey response)
+        public IActionResult MovieSurvey(MovieSurvey response)
         {
             _context.Movies.Add(response); // Add record to database
             _context.SaveChanges(); // save the record in the database

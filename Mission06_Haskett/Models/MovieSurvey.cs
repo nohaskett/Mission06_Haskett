@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Mission06_Haskett.Models
 {
@@ -7,8 +8,10 @@ namespace Mission06_Haskett.Models
         [Key]
         [Required] // This parameter means that the applicaiton will break if it is not included. But I account for this as well in the actual form on the client side.
         public int MovieId { get ; set; } // Getters and setters for each table attribute
-        [Required]
-        public string Category { get; set; } // Need to fix this to be category ID, not category
+
+        [ForeignKey("CategoryId")]
+        public string CategoryId { get; set; } // Need to fix this to be category ID, not category
+        public Category Category { get; set; }
         public string Title { get; set; }
         [Required]
         public int Year { get; set; }

@@ -35,8 +35,15 @@
         <option value="true">Yes</option>
         <option value="false">No</option>
     </select>
+
     <label asp-for="LentTo" style="display: block; margin-bottom: 5px;">Lent To:</label>
     <input asp-for="LentTo" style="width: 100%; padding: 8px; margin-bottom: 10px; box-sizing: border-box;">
+
+    <label asp-for="CopiedToPlex" style="display: block; margin-bottom: 5px;">Copied to Plex?</label>
+    <select asp-for="CopiedToPlex">
+        <option value="true">Yes</option>
+        <option value="false">No</option>
+    </select>
 
     <label asp-for="Notes" style="display: block; margin-bottom: 5px;">Notes:</label>
     <input asp-for="Notes" style="width: 100%; padding: 8px; margin-bottom: 10px; box-sizing: border-box;" maxlength="25">
