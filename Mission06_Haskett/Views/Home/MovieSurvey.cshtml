@@ -4,7 +4,7 @@
 @{
 }
 
-@model MovieSurvey
+@model Movies
 
 @if (ViewBag.ErrorMessage != null)
 {
@@ -22,9 +22,9 @@
     
     <select asp-for="CategoryId">
         <option value="">Select a Category</option>
-        @foreach (CategoryList c in ViewBag.Categories)
+        @foreach (Category c in ViewBag.Categories)
         {
-            <option value="@c.CategoryId">@c.Category</option>
+            <option value="@c.CategoryId">@c.CategoryName</option>
         }
     </select>
 
@@ -56,8 +56,8 @@
 
     <label asp-for="CopiedToPlex" style="display: block; margin-bottom: 5px;">Copied to Plex?</label>
     <select asp-for="CopiedToPlex" required>
-        <option value="1">Yes</option>
-        <option value="0">No</option>
+        <option value="true">Yes</option>
+        <option value="false">No</option>
     </select>
 
     <label asp-for="Notes" style="display: block; margin-bottom: 5px;">Notes:</label>

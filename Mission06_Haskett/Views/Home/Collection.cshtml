@@ -4,7 +4,7 @@
 @{
 }
 
-@model List<MovieSurvey>
+@model List<Movies>
 
 <table class="table table-bordered">
     <thead class="fw-bold">
@@ -25,7 +25,7 @@
     {
         <tbody>
             <tr>
-                <td>@x.CategoryId</td>
+                <td>@x.Category?.CategoryName</td>
                 <td>@x.Title</td>
                 <td>@x.Year</td>
                 <td>@x.Director</td>

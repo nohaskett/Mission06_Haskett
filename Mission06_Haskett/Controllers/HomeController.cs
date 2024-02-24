@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Mission06_Haskett.Models;
 using System.Diagnostics;
 
@@ -25,14 +26,14 @@ namespace Mission06_Haskett.Controllers
         public IActionResult MovieSurvey()
         {
             ViewBag.Categories = _context.Categories
-                .OrderBy(x => x.Category)
+                .OrderBy(x => x.CategoryName)
                 .ToList();
 
-            return View("MovieSurvey", new MovieSurvey());
+            return View("MovieSurvey", new Movies());
         }
 
         [HttpPost]
-        public IActionResult MovieSurvey(MovieSurvey response)
+        public IActionResult MovieSurvey(Movies response)
         {
             if (ModelState.IsValid)
             {
@@ -44,7 +45,7 @@ namespace Mission06_Haskett.Controllers
             else // Invalid Data
             {
                 ViewBag.Categories = _context.Categories
-                .OrderBy(x => x.Category)
+                .OrderBy(x => x.CategoryName)
                 .ToList();
 
                 return View(response);
@@ -55,6 +56,7 @@ namespace Mission06_Haskett.Controllers
         {
             // Linq
             var movies = _context.Movies
+                .Include(m => m.Category)
                 .OrderBy(x => x.MovieId).ToList();
 
             return View(movies);
@@ -67,21 +69,34 @@ namespace Mission06_Haskett.Controllers
                 .Single(x => x.MovieId == id);
 
             ViewBag.Categories = _context.Categories
-                .OrderBy(x => x.Category)
+                .OrderBy(x => x.CategoryName)
                 .ToList();
 
             return View("MovieSurvey", recordToEdit);
         }
 
         [HttpPost]
-        public IActionResult Edit(MovieSurvey updatedInfo)
+        public IActionResult Edit(Movies updatedInfo)
         {
-            
-            _context.Update(updatedInfo);
-            _context.SaveChanges();
 
-            return RedirectToAction("Collection");
-            
+            if (ModelState.IsValid)
+            {
+                _context.Update(updatedInfo);
+                _context.SaveChanges();
+
+                return RedirectToAction("Collection");
+            }
+            else
+            {
+                // If the model is not valid, you might want to provide categories for dropdowns or any other necessary data
+                ViewBag.Categories = _context.Categories
+                    .OrderBy(x => x.CategoryName)
+                    .ToList();
+
+                // Return the view with validation errors and the model
+                return View("MovieSurvey", updatedInfo);
+            }
+
         }
 
         [HttpGet]
@@ -94,7 +109,7 @@ namespace Mission06_Haskett.Controllers
         }
 
         [HttpPost]
-        public IActionResult Delete(MovieSurvey record)
+        public IActionResult Delete(Movies record)
         {
             _context.Movies.Remove(record);
             _context.SaveChanges();
