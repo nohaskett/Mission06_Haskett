@@ -6,7 +6,7 @@ namespace Mission06_Haskett.Models
     {
         [Key]
         public int CategoryId { get; set; }
-        public string CategoryName { get; set; }
+        public string CategoryName { get; set; } // Use the actual name of the table column
 
     }
 }

@@ -63,7 +63,7 @@ namespace Mission06_Haskett.Controllers
         }
 
         [HttpGet]
-        public IActionResult Edit(int id)
+        public IActionResult Edit(int id) // Get action that passed specific movieid
         {
             var recordToEdit = _context.Movies
                 .Single(x => x.MovieId == id);
@@ -79,10 +79,10 @@ namespace Mission06_Haskett.Controllers
         public IActionResult Edit(Movies updatedInfo)
         {
 
-            if (ModelState.IsValid)
+            if (ModelState.IsValid) // Validation for the user input
             {
                 _context.Update(updatedInfo);
-                _context.SaveChanges();
+                _context.SaveChanges(); // Save the edited movie to the passed MovieId
 
                 return RedirectToAction("Collection");
             }

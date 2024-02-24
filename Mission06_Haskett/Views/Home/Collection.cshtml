@@ -6,7 +6,7 @@
 
 @model List<Movies>
 
-<table class="table table-bordered">
+<table class="table table-bordered"> <!--This table will display all the movies, use bootstrap like the video-->
     <thead class="fw-bold">
         <tr>
             <td>CategoryId</td>
@@ -23,7 +23,7 @@
 
     @foreach (var x in Model)
     {
-        <tbody>
+        <tbody> <!-- take the data from the tables using a foreach statement-->
             <tr>
                 <td>@x.Category?.CategoryName</td>
                 <td>@x.Title</td>
